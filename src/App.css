@@ -1,0 +1,167 @@
+.container{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0px 30px;
+  border: 1px solid ;
+  border-radius: 20px;
+  background-color: darkgrey;
+  color: rgb(1, 1, 125);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.app{
+  background-color: cornflowerblue;
+  color: rgb(1, 1, 125);
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px 0px;
+  margin: 20px 0px;
+}
+.btnsContainer  {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0px 80px;
+  padding-top: 20px;
+}
+.btns1{
+  background-color: brown;
+  color: azure;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 1px 1px;
+  border: none;
+}
+.btns2{
+  background-color: green;
+  color: azure;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow:-1px 1px;
+  border: none;
+}
+input{
+  padding: 10px;
+  background-color: antiquewhite;
+  border-radius: 10px;
+}
+img{
+  width: 40%;
+  height: 40%;
+}
+.todoContainer{
+  padding: 0px 40px;
+  color: rgb(1, 1, 125);;
+}
+
+
+@media screen and (max-width:412px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0px 30px;
+    border: 4px solid ;
+    border-radius: 20px;
+    background-color: darkgrey;
+  }
+  .app{
+    background-color: cornflowerblue;
+    color: azure;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px 0px;
+    margin: 20px 0px;
+  }
+  .btnsContainer  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0px 80px;
+    padding-top: 20px;
+    
+  }
+  .btns1{
+    background-color: brown;
+    color: azure;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px;
+    border: none;
+    font-size: 10px;
+  }
+  .btns2{
+    background-color: green;
+    color: azure;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow:-1px 1px;
+    border: none;
+    font-size: 10px;
+  }
+  input{
+    padding: 2px;
+    width: 100px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+  }
+  img{
+  width: 50%;
+}
+}
+
+
+@media screen and (max-width:540px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0px 30px;
+    border: 4px solid ;
+    border-radius: 20px;
+    background-color: darkgrey;
+  }
+  .app{
+    background-color: cornflowerblue;
+    color: azure;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px 0px;
+    margin: 20px 0px;
+  }
+  .btnsContainer  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0px 80px;
+    padding-top: 20px;
+    
+  }
+  .btns1{
+    background-color: brown;
+    color: azure;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px;
+    border: none;
+  }
+  .btns2{
+    background-color: green;
+    color: azure;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow:-1px 1px;
+    border: none;
+  }
+  input{
+    padding: 10px;
+    width: 90%;
+    background-color: antiquewhite;
+    border-radius: 10px;
+  }
+  img{
+  width: 50%;
+  }
+}
+
