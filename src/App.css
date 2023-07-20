@@ -44,6 +44,11 @@ input{
   background-color: antiquewhite;
   border-radius: 10px;
 }
+.input_and_clear {
+  display: flex;
+  text-align: center;
+  margin: 0px 39px;
+}
 img{
   width: 40%;
   height: 40%;

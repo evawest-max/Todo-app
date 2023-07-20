@@ -1,25 +1,33 @@
 import { useState } from "react";
 let newitem = [];
 
-
 let it = [];
 
 function TodoApp() {
+  let put = (
+    <button type="button" onClick={clearfield}>
+      <b>X</b>
+    </button>
+  );
   const [current, newcurent] = useState("Type activities");
+
+  const [clear, newclear] = useState("");
+  function clearfield() {
+    newcurent("");
+    newclear("");
+  }
+
   function update(event) {
     newcurent(event.target.value);
+    newclear(put);
   }
 
   function updateArray(event) {
     newitem.push(event.target.value);
   }
 
-  function yesDelete(){
-    
-  }
-  function noDelete(){
-
-  }
+  function yesDelete() {}
+  function noDelete() {}
 
   const [question, newQuestion] = useState("");
   const tryit = () => {
@@ -28,8 +36,12 @@ function TodoApp() {
       <div>
         <h2> Are you sure</h2>
         <div className="btnsContainer">
-          <button className="btns2" onClick={yesDelete}>Yes</button>
-          <button className="btns1" onclick={noDelete}>no</button>
+          <button className="btns2" onClick={yesDelete}>
+            Yes
+          </button>
+          <button className="btns1" onclick={noDelete}>
+            no
+          </button>
         </div>
       </div>
     );
@@ -41,7 +53,9 @@ function TodoApp() {
       newitem.map((items) => {
         return (
           <div>
-            <b><li>{items}</li></b>
+            <b>
+              <li>{items}</li>
+            </b>
             <button onClick={tryit} className="btns1">
               Delete
             </button>
@@ -49,15 +63,14 @@ function TodoApp() {
         );
       })
     );
-
   }
 
   function removeitem(iv) {
     newlistItem("Empty");
     newQuestion("");
     newcurent("");
-    for (let i of it){
-      it.pop(i)
+    for (let i of it) {
+      it.pop(i);
     }
   }
 
@@ -67,13 +80,16 @@ function TodoApp() {
         <h1 className="title">TODO APP</h1>
         <h4>{current}</h4>
         <form>
-          <input
-            type="text"
-            value={current}
-            className="pp"
-            onChange={update}
-            onBlur={updateArray}
-          ></input>
+          <div className="input_and_clear">
+            <input
+              type="text"
+              value={current}
+              className="pp"
+              onChange={update}
+              onBlur={updateArray}
+            />
+            <div>{clear}</div>
+          </div>
 
           <div className="btnsContainer">
             <button type="button" className="btns1" onClick={removeitem}>
