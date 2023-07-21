@@ -2,6 +2,8 @@ import "./App.css";
 import todo_image from "./todo_image.png";
 import { TodoApp } from "./todo_app";
 import { About } from "./about";
+import Question from "./deleteQuestion";
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
           <TodoApp />
         </div>
       </div>
+      
     </div>
   );
 }

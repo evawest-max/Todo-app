@@ -1,52 +1,35 @@
 import { useState } from "react";
+import TodoList from "./todoList";
+import AddButton from "./addButton";
+import DeleteAllButton from "./deleteallButton";
+import Question from "./deleteQuestion";
+
+let xButton = false;
+let clickedone = "";
 let newitem = [];
 
-let it = [];
-
 function TodoApp() {
-  let put = (
+  function clearfield() {
+  
+    newcurent("");
+    xButton=false;
+  }
+  const [xbuttonState,] = useState(
     <button type="button" onClick={clearfield}>
-      <b>X</b>
+      {" "}
+      <b>X</b>{" "}
     </button>
   );
   const [current, newcurent] = useState("Type activities");
-
-  const [clear, newclear] = useState("");
-  function clearfield() {
-    newcurent("");
-    newclear("");
-  }
-
   function update(event) {
     newcurent(event.target.value);
-    newclear(put);
+    event.target.value < 1 ? xButton = false : xButton = true;
   }
 
   function updateArray(event) {
     newitem.push(event.target.value);
   }
 
-  function yesDelete() {}
-  function noDelete() {}
-
-  const [question, newQuestion] = useState("");
-  const tryit = () => {
-    it.pop();
-    it.push(
-      <div>
-        <h2> Are you sure</h2>
-        <div className="btnsContainer">
-          <button className="btns2" onClick={yesDelete}>
-            Yes
-          </button>
-          <button className="btns1" onclick={noDelete}>
-            no
-          </button>
-        </div>
-      </div>
-    );
-    newQuestion(it[0]);
-  };
   const [listItem, newlistItem] = useState("Empty");
   function addItem() {
     newlistItem(
@@ -56,57 +39,73 @@ function TodoApp() {
             <b>
               <li>{items}</li>
             </b>
-            <button onClick={tryit} className="btns1">
-              Delete
-            </button>
+            <button className="btns1">Delete</button>
           </div>
         );
       })
     );
+    console.log(listItem);
   }
+  function removeAll(iv) {
+    clickedone = <Question onyes={yesclicked} onNo={noclicked} />;
+    newlistItem(
+      newitem.map((items) => {
+        return (
+          <div>
+            <b>
+              <li>{items}</li>
+            </b>
+            <button className="btns1">Delete</button>
+          </div>
+        );
+      })
+    );
+    //newQuestion("");
 
-  function removeitem(iv) {
-    newlistItem("Empty");
-    newQuestion("");
-    newcurent("");
-    for (let i of it) {
-      it.pop(i);
+   
+    
+  }
+  function yesclicked() {
+    for (let i of newitem) {
+      newitem.pop(i);
     }
+    newitem.shift();
+    console.log("remove clicked");
+    newlistItem("Empty");
+    clickedone = null;
+  }
+  function noclicked() {
+    clickedone = null;
+    newlistItem(listItem);
   }
 
   return (
     <div>
-      <div className="app">
-        <h1 className="title">TODO APP</h1>
-        <h4>{current}</h4>
-        <form>
-          <div className="input_and_clear">
-            <input
-              type="text"
-              value={current}
-              className="pp"
-              onChange={update}
-              onBlur={updateArray}
-            />
-            <div>{clear}</div>
-          </div>
+      <div>
+        <div className="app">
+          <h1 className="title">TODO APP</h1>
+          <h4>{current}</h4>
+          <form>
+            <div className="input_and_clear">
+              <input
+                type="text"
+                value={current}
+                className="pp"
+                onChange={update}
+                onBlur={updateArray}
+              />
+              <div>{xButton && xbuttonState}</div>
+            </div>
 
-          <div className="btnsContainer">
-            <button type="button" className="btns1" onClick={removeitem}>
-              Delete all
-            </button>
-            <button type="button" className="btns2" onClick={addItem}>
-              Add
-            </button>
-          </div>
-        </form>
+            <div className="btnsContainer">
+              <DeleteAllButton delclick={removeAll} />
+              <AddButton click={addItem} />
+            </div>
+          </form>
+        </div>
+        {<TodoList todo={listItem} />}
       </div>
-
-      <div className="todoContainer">
-        <h1>TODO LIST</h1>
-        <ol>{listItem}</ol>
-      </div>
-      {question}
+      {clickedone}
     </div>
   );
 }
