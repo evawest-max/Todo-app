@@ -28,11 +28,24 @@ function TodoApp() {
   }
 
   function deleteTodo() {
-    for (let i=0; i<=newitem.length;i++){
-      if (countHolder[i]){
-
-      }
-    }
+ 
+          newitem.pop(newitem.index)
+          newlistItem(
+            newitem.map((items, index) => {
+              return (
+                
+                  <b key={index}>
+                    <li>
+                      {items} <button onClick={deleteTodo}>Delete</button>
+                      <input type="checkbox"></input>
+                    </li>
+                  </b>
+                 
+              );
+            })
+          );
+          console.log(newitem)
+    
   }
   
   const [listItem, newlistItem] = useState("Empty!");
@@ -44,20 +57,19 @@ function TodoApp() {
     newlistItem(
       newitem.map((items, index) => {
         return (
-          <div>
-            <b>
+          
+            <b key={index}>
               <li>
                 {items} <button onClick={deleteTodo}>Delete</button>
                 <input type="checkbox"></input>
               </li>
             </b>
-          </div>
           
         );
       })
     );
-    console.log(listItem);
-    console.log(newitem)
+    //console.log(listItem);
+   // console.log(newitem)
   }
   function removeAll(iv) {
     clickedone = <Question onyes={yesclicked} onNo={noclicked} />;
